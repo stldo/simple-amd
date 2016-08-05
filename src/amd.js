@@ -188,7 +188,7 @@
                 return;
             } else if ('error' === event.type) {
                 if (!fallback(module)) { /* If no callbacks are available, throw an Error */
-                    if ('undefined' !== typeof __DEVELOPMENT__ && __DEVELOPMENT__) {
+                    if ('undefined' === typeof __DEVELOPMENT__ || __DEVELOPMENT__) {
                         throw new Error('"' + module.id + '" couldn\'t be loaded.');
                     } else {
                         redirectError();
@@ -204,7 +204,7 @@
             /* Check if the define call matches the current id */
 
             if (this.getAttribute(pathAttribute) !== path) {
-                if ('undefined' !== typeof __DEVELOPMENT__ && __DEVELOPMENT__) {
+                if ('undefined' === typeof __DEVELOPMENT__ || __DEVELOPMENT__) {
                     throw new Error('Path mismatch in "' + module.id + '".');
                 } else {
                     redirectError();
@@ -237,14 +237,14 @@
             var lastDefineCall = defineQueue.shift();
 
             if (defineQueue.length) { /* There should be only one define call in queue... */
-                if ('undefined' !== typeof __DEVELOPMENT__ && __DEVELOPMENT__) {
+                if ('undefined' === typeof __DEVELOPMENT__ || __DEVELOPMENT__) {
                     throw new Error('"' + path + '" has multiple define() calls.');
                 } else {
                     redirectError();
                     return;
                 }
             } else if (undefined === lastDefineCall) { /* ...and at least one  */
-                if ('undefined' !== typeof __DEVELOPMENT__ && __DEVELOPMENT__) {
+                if ('undefined' === typeof __DEVELOPMENT__ || __DEVELOPMENT__) {
                     throw new Error('"' + module.id + '" wasn\'t defined.');
                 } else {
                     redirectError();
@@ -294,7 +294,7 @@
         /* Configure prefix */
 
         if (!prefixes[prefix]) {
-            if ('undefined' !== typeof __DEVELOPMENT__ && __DEVELOPMENT__) {
+            if ('undefined' === typeof __DEVELOPMENT__ || __DEVELOPMENT__) {
                 throw new Error('"' + module.id + '" has an invalid prefix: "' + prefix + '".');
             } else {
                 redirectError();
@@ -472,7 +472,7 @@
         /* define(): a factory is required */
 
         if (undefined === factory) {
-            if ('undefined' !== typeof __DEVELOPMENT__ && __DEVELOPMENT__) {
+            if ('undefined' === typeof __DEVELOPMENT__ || __DEVELOPMENT__) {
                 throw new Error('define() was called without a factory.');
             } else {
                 redirectError();
@@ -509,7 +509,7 @@
                 var module = (modules[id] || {}).cache;
 
                 if (undefined === module) {
-                    if ('undefined' !== typeof __DEVELOPMENT__ && __DEVELOPMENT__) {
+                    if ('undefined' === typeof __DEVELOPMENT__ || __DEVELOPMENT__) {
                         throw new Error('"' + id + '" must be loaded with a callback.');
                     } else {
                         redirectError();
@@ -593,7 +593,7 @@
 
         if (configurationTimeout) {
             if (1000 > configurationTimeout) {
-                if ('undefined' !== typeof __DEVELOPMENT__ && __DEVELOPMENT__) {
+                if ('undefined' === typeof __DEVELOPMENT__ || __DEVELOPMENT__) {
                     throw new Error('Minimum timeout is 1s.');
                 } else {
                     redirectError();
