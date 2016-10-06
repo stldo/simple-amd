@@ -605,6 +605,8 @@
 
     };
 
+    require.parameters = options.parameters;
+
     window.define = define;
     window.require = require;
 
