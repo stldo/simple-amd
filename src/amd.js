@@ -308,7 +308,7 @@
 
         /* Configure path */
 
-        if (-1 === path.indexOf('?')) { /* If the path doesn't have query params, add extension based on prefix... */
+        if (path === module.id && !REQUEST_METHOD_REGEXP.exec(path)) {
             prefix.regExp = prefix.regExp || new RegExp('(?:\.' + prefix.extension + ')?$');
             path = path.replace(prefix.regExp, '.' + prefix.extension); /* ...if it isn't already set */
         }
