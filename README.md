@@ -1,8 +1,7 @@
-# amd
+# simple-amd
 
-Simple implementation of an AMD loader.
+Simple AMD loader for browsers.
 
-## TODO
+## License
 
-- Documentation
-- npm module
+[The MIT License](./LICENSE)
