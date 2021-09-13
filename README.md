@@ -1,6 +1,6 @@
 # simple-amd
 
-Simple AMD loader for browsers.
+Basic AMD loader for browsers.
 
 ## License
 
